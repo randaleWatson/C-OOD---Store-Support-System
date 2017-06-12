@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StoreSupportSystem
 {
-   class Inventory
+   public class Inventory
    {
       Dictionary<int, Item> items;
 
@@ -13,21 +13,38 @@ namespace StoreSupportSystem
          items = new Dictionary<int, Item>();
       }
 
-      public Inventory(Dictionary<int, Item> items)
+      public Inventory(params Item[] items) : this()
+      {         
+         addItems(items);
+      }
+
+      public void addItems(params Item[] items)
       {
-         this.items = items;
+         foreach (Item item in items)
+         {
+            if (!this.items.ContainsKey(item.Specification.Upc))
+            {
+               this.items.Add(item.Specification.Upc, item);
+            }
+            else
+            {
+               throw new InvalidOperationException("Cannot add duplicate item UPC to the inventory");
+            }
+         }
       }
 
       public Item FindItem(int upc)
       {
          Item item;
-         if(items.TryGetValue(upc, out item))
+         items.TryGetValue(upc, out item);
+         return item;
+      }
+
+      public int ItemCount
+      {
+         get
          {
-            return item;
-         }
-         else
-         {
-            throw new ItemNotFoundException($"UPC: {upc} not found!");
+            return items.Count;
          }
       }
    }

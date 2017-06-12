@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StoreSupportSystem
 {
-   public class Item
+   public class Item : IEqualityComparer<Item>
    {
       public string Name { get; private set; }
       public ItemSpecification Specification { get; private set; }
@@ -17,6 +17,17 @@ namespace StoreSupportSystem
          }
          Name = name;
          Specification = specification;
+      }
+
+      bool IEqualityComparer<Item>.Equals(Item item1, Item item2)
+      {
+         return(item1.Specification.Equals(item2.Specification));
+      }
+
+      //TODO: Improve GetHashCodeFomrula
+      int IEqualityComparer<Item>.GetHashCode(Item item)
+      {
+         return item.Specification.GetHashCode() + item.Name.GetHashCode();
       }
    }
 }

@@ -4,14 +4,14 @@ using System.Text;
 
 namespace StoreSupportSystem
 {
-   public class ItemSpecification
+   public class ItemSpecification : IEqualityComparer<ItemSpecification>
    {
       int upc;
       ItemInfo info;
 
       public ItemSpecification(int upc, ItemInfo info)
       {
-         this.upc = upc;
+         Upc = upc;
          this.info = info;
       }
 
@@ -28,7 +28,7 @@ namespace StoreSupportSystem
             }
             else
             {
-               throw new IndexOutOfRangeException("Upc cannot be negative");
+               throw new ArgumentOutOfRangeException("Upc cannot be negative");
             }
          }
       }
@@ -39,7 +39,7 @@ namespace StoreSupportSystem
          {
             return info;
          }
-         protected set
+         private set
          {
             if (value != null)
             {
@@ -50,6 +50,25 @@ namespace StoreSupportSystem
                throw new ArgumentNullException("ItemInfo cannot be null");
             }
          }
+      }
+
+      bool IEqualityComparer<ItemSpecification>.Equals(ItemSpecification spec1, ItemSpecification spec2)
+      {
+         // Check for equlaity with UPC number
+         if (spec1.upc.Equals(spec2.upc))
+         {
+            // if UPC are the same ItemInfo level details
+            if((spec1.info.Price == spec2.info.Price) && (spec1.info.Description == spec2.info.Description))
+            {
+               return true;
+            }
+         }
+         return false;
+      }
+
+      int IEqualityComparer<ItemSpecification>.GetHashCode(ItemSpecification spec)
+      {
+         return spec.upc;
       }
    }
 }

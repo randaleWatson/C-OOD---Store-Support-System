@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StoreSupportSystem
 {
-   class StoreSupportSystem
+   public class StoreSupportSystem
    {
       SaleManager saleManager;
       Inventory inventory;
@@ -24,7 +24,7 @@ namespace StoreSupportSystem
          }
 
          //TODO: Add a logger at some point
-         catch (ItemNotFoundException inf)
+         catch (ItemNotFoundException)
          {
             //TODO: Add a way to catch logger
          }

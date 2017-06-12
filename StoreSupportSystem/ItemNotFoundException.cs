@@ -2,7 +2,7 @@
 
 namespace StoreSupportSystem
 {
-   internal class ItemNotFoundException : Exception
+   public class ItemNotFoundException : Exception
    {
       public ItemNotFoundException()
       {

@@ -4,26 +4,26 @@ using System.Text;
 
 namespace StoreSupportSystem
 {
-   class VoidedSaleState : SaleState
+   public class VoidedSaleState : SaleState
    {
       public override void BuyItems(decimal payAmount, Sale sale)
       {
-         throw new NotImplementedException();
+         // Does nothing
       }
 
       public override void BuyItems(Sale sale)
       {
-         throw new NotImplementedException();
+         // Does nothing
       }
 
       public override void MakePayment(decimal paymentAmount, Sale sale)
       {
-         throw new NotImplementedException();
+         // Does nothing
       }
 
       public override void TotalSale(Sale sale)
       {
-         throw new NotImplementedException();
+         // Does nothing
       }
    }
 }

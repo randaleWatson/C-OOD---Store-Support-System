@@ -10,9 +10,9 @@ namespace StoreSupportSystem
 
       public ItemInfo(string description, decimal price, int stockQty = 0)
       {
-         this.description = description;
-         this.price = price;
-         this.stockQty = stockQty;
+         Description = description;
+         Price = price;
+         StockQty = stockQty;
       }
 
       public string Description
@@ -61,7 +61,7 @@ namespace StoreSupportSystem
          }
          set
          {
-            if(value > 0)
+            if(value >= 0)
             {
                stockQty = value;
             }

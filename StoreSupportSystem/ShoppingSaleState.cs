@@ -8,22 +8,24 @@ namespace StoreSupportSystem
    {
       public override void BuyItems(decimal payAmount, Sale sale)
       {
-         throw new NotImplementedException();
+         // TODO: Check to see if this method is of any good
       }
 
       public override void BuyItems(Sale sale)
       {
-         throw new NotImplementedException();
+         sale.ReallyBuyItems();
       }
 
       public override void MakePayment(decimal paymentAmount, Sale sale)
       {
-         throw new NotImplementedException();
+         // Should do nothing because Awaing Purchase State should handle this action
+         // Stay in Shopping state
       }
 
       public override void TotalSale(Sale sale)
       {
-         throw new NotImplementedException();
+         sale.ReallyTotalSale();
+         sale.SaleState = new AwaitingPaymentSaleState();
       }
    }
 }

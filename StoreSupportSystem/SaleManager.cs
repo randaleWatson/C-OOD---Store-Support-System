@@ -6,9 +6,14 @@ namespace StoreSupportSystem
    {
       Sale sale;
 
+      public SaleManager()
+      {
+         sale = GetCurrentSale();
+      }
+
       public void BuyItems(Item item, int purchaseQty)
       {
-         GetCurrentSale().BuyItems(item, purchaseQty);
+         sale.BuyItems(item, purchaseQty);
       }
       
       public Sale GetCurrentSale()
