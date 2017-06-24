@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace StoreSupportSystem
 {
-   //TODO: Incorporate SaleState
    public class Sale
    {
-      List<SaleLineItem> saleLineItems;
-      SaleState saleState;
-      Item currentItem;
-      int currentPurchaseQty;
-      decimal saleTotal;
+      private List<SaleLineItem> saleLineItems;
+      private SaleState saleState;
+      private Item currentItem;
+      private int currentPurchaseQty;
+      private decimal saleTotal;
 
       public Sale()
       {
@@ -29,6 +28,10 @@ namespace StoreSupportSystem
          currentItem = item;
          currentPurchaseQty = purchaseQty;
          saleState.BuyItems(this);
+
+         // clear current Item and Quantity
+         currentItem = null;
+         currentPurchaseQty = 0;
       }
 
       SaleLineItem create()
@@ -41,14 +44,15 @@ namespace StoreSupportSystem
          saleState.TotalSale(this);
       }
 
-      //TODO: flesh out Really buy items method
       public void ReallyBuyItems()
       {
-         SaleLineItem saleLineItem = create();
-         saleLineItem.BuyItems(currentItem, currentPurchaseQty);
-         saleLineItems.Add(saleLineItem);
-         currentItem = null;
-         currentPurchaseQty = 0;
+         // TODO: Use a try/catch block to handle quanity of zero or null item
+         if (currentItem != null && currentPurchaseQty > 0)
+         {
+            SaleLineItem saleLineItem = create();
+            saleLineItem.BuyItems(currentItem, currentPurchaseQty);
+            saleLineItems.Add(saleLineItem);
+         }
       }
 
       protected internal virtual void ReallyTotalSale()
@@ -94,6 +98,11 @@ namespace StoreSupportSystem
       {
          // Adjust the amount due based on payment
          AmountDue -= paymentAmount;
+      }
+
+      public void VoidSale()
+      {
+         saleState.VoidSale(this);
       }
    }
 }

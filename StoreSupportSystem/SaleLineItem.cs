@@ -4,9 +4,9 @@ namespace StoreSupportSystem
 {
    public class SaleLineItem
    {
-      Item item;
-      int quantity;
-      decimal salePrice;
+      private Item item;
+      private int quantity;
+      private decimal salePrice;
 
       public void BuyItems(Item item, int purchaseQty)
       {
@@ -15,7 +15,8 @@ namespace StoreSupportSystem
          SalePrice = item.Specification.Info.Price;
       }
 
-      public Item Item {
+      public Item Item
+      {
          get
          {
             return item;

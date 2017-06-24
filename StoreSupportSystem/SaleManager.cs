@@ -4,7 +4,7 @@ namespace StoreSupportSystem
 {
    public class SaleManager
    {
-      Sale sale;
+      private Sale sale;
 
       public SaleManager()
       {

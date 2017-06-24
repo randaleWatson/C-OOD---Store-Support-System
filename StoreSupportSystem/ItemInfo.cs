@@ -4,9 +4,9 @@ namespace StoreSupportSystem
 {
    public class ItemInfo
    {
-      string description;
-      int stockQty;
-      decimal price;
+      private string description;
+      private int stockQty;
+      private decimal price;
 
       public ItemInfo(string description, decimal price, int stockQty = 0)
       {
@@ -61,7 +61,7 @@ namespace StoreSupportSystem
          }
          set
          {
-            if(value >= 0)
+            if (value >= 0)
             {
                stockQty = value;
             }

@@ -6,7 +6,7 @@ namespace StoreSupportSystem
    [TestClass]
    public class ItemTest
    {
-      ItemSpecification spec;
+      private ItemSpecification spec;
 
       [TestInitialize]
       public void Setup()

@@ -1,10 +1,11 @@
 ﻿namespace StoreSupportSystem
 {
-   public abstract class SaleState
+   public interface SaleState
    {
-      public abstract void BuyItems(decimal payAmount, Sale sale);
-      public abstract void TotalSale(Sale sale);
-      public abstract void MakePayment(decimal paymentAmount, Sale sale);
-      public abstract void BuyItems(Sale sale);
+      void BuyItems(decimal payAmount, Sale sale);
+      void TotalSale(Sale sale);
+      void MakePayment(decimal paymentAmount, Sale sale);
+      void BuyItems(Sale sale);
+      void VoidSale(Sale sale);
    }
 }

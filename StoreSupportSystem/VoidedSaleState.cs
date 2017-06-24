@@ -6,22 +6,27 @@ namespace StoreSupportSystem
 {
    public class VoidedSaleState : SaleState
    {
-      public override void BuyItems(decimal payAmount, Sale sale)
+      public void BuyItems(decimal payAmount, Sale sale)
       {
          // Does nothing
       }
 
-      public override void BuyItems(Sale sale)
+      public void BuyItems(Sale sale)
       {
          // Does nothing
       }
 
-      public override void MakePayment(decimal paymentAmount, Sale sale)
+      public void MakePayment(decimal paymentAmount, Sale sale)
       {
          // Does nothing
       }
 
-      public override void TotalSale(Sale sale)
+      public void TotalSale(Sale sale)
+      {
+         // Does nothing
+      }
+
+      public void VoidSale(Sale sale)
       {
          // Does nothing
       }

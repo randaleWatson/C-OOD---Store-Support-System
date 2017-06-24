@@ -7,7 +7,7 @@ namespace StoreSupportSystem
    [TestClass]
    public class SaleLineItemTests
    {
-      Inventory inventory;
+      private Inventory inventory;
 
       [TestInitialize]
       public void Setup()

@@ -6,8 +6,8 @@ namespace StoreSupportSystem
 {
    public class ItemSpecification : IEqualityComparer<ItemSpecification>
    {
-      int upc;
-      ItemInfo info;
+      private int upc;
+      private ItemInfo info;
 
       public ItemSpecification(int upc, ItemInfo info)
       {

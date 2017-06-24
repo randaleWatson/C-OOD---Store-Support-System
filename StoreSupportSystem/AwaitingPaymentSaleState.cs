@@ -6,12 +6,12 @@ namespace StoreSupportSystem
 {
    public class AwaitingPaymentSaleState : SaleState
    {
-      public override void BuyItems(decimal payAmount, Sale sale)
+      public void BuyItems(decimal payAmount, Sale sale)
       {
          // Update sale records and reflect in inventory
       }
 
-      public override void BuyItems(Sale sale)
+      public void BuyItems(Sale sale)
       {
          // Check that no payments have been made
          if (sale.AmountDue == sale.SaleTotal)
@@ -26,7 +26,7 @@ namespace StoreSupportSystem
          // Do nothing because payment is process
       }
 
-      public override void MakePayment(decimal paymentAmount, Sale sale)
+      public void MakePayment(decimal paymentAmount, Sale sale)
       {
          // make the payment on the sale
          sale.ReallyMakePayment(paymentAmount);
@@ -39,10 +39,15 @@ namespace StoreSupportSystem
          }
       }
 
-      public override void TotalSale(Sale sale)
+      public void TotalSale(Sale sale)
       {
          // Do nothing sale should already be totalled by Shopping state
          // Stays in Awaiting Payment State
+      }
+
+      public void VoidSale(Sale sale)
+      {
+         sale.SaleState = new VoidedSaleState();
       }
    }
 }

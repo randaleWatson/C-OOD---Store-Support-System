@@ -8,8 +8,8 @@ namespace StoreSupportSystem
    [TestClass]
    public class SaleTest
    {
-      Sale sale;
-      Inventory inventory;
+      private Sale sale;
+      private Inventory inventory;
 
       [TestInitialize]
       public void Setup()

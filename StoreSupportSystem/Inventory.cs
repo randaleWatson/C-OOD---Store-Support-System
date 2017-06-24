@@ -6,7 +6,7 @@ namespace StoreSupportSystem
 {
    public class Inventory
    {
-      Dictionary<int, Item> items;
+      private Dictionary<int, Item> items;
 
       public Inventory()
       {
